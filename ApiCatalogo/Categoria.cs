@@ -1,19 +1,27 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
-namespace ApiCatalogo;
-
-public class Categoria
+namespace ApiCatalogo
 {
-
-    public Categoria()
+   
+    public class Categoria
     {
-       Produtos = new Collection<Produto>();
-    }  
-    public int CatoriaId { get; set; }
+        
+        public Categoria()
+        {
+            Produtos = new Collection<Produto>();
+        }
+        [Key]
+        public int CategoriaId { get; set; }
 
-    public string? Nome { get; set; }
+        [Required]
+        [MaxLength(80)]
+        public string? Nome { get; set; }
 
-    public string? ImagemUrl { get; set; }
+        [Required]
+        [MaxLength(300)]
+        public string? ImagemUrl { get; set; }
 
-    public ICollection<Produto>?Produtos { get; set; }
+        public ICollection<Produto>? Produtos { get; set; }
+    }
 }
